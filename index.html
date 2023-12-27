@@ -5,10 +5,24 @@
         
     </head> 
     <body>
-        <div class="container">
+    
+        <div class="pop-upContainer">
+            <div class = 'fnameDiv' style=" margin-left: 22%; ">
+                <label for="fname"  class = "header_text" >my love name:</label>
+                <input type="text" id="text" name="fname" style=" height: 30px; border: 3px solid #73AD21; border-radius: 6px; "><br><br>
+            </div>
+                <div class = "buttons">
+                    <button class="btn" id = "submit" onclick="displayPage()">submit</button>
+                
+                </div>
+            
+
+        </div>
+
+        <div class="container" style="display: none;">
+
             <div >
-                <h1 class = "header_text">Do you love  <img src="https://media.giphy.com/media/FWS7G7YkIm415ofAJR/giphy.gif" height="50" alt="Cute animated illustration">
-            me?</h1>
+                <h1 class = "header_text">Do you love me?</h1><h1  class = "header_text" id="lovely">lovey</h1>
             </div>
             <div class="gif_container">
                 <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2JiZDR0a3lvMWF4OG8yc3p6Ymdvd3g2d245amdveDhyYmx6eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute animated illustration">
@@ -18,12 +32,22 @@
                 <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
                 <script>
                     var i= 1;
+                    var lovey =  document.getElementById("lovey").value;
+                    function displayPage(){
+                        var x = document.getElementById("text").value;
+                        document.getElementById("text").value = x;
+                        document.getElementsByClassName('pop-upContainer')[0].style.display = 'none'
+                        document.getElementsByClassName('container')[0].style.display = 'block';
+                        document.getElementById('lovely').innerHTML = document.getElementById('text').value;
+
+                    }
+
                     function nextPage() {
                         window.location.href = "yes.html";
                     }
                     
                     function moveButton() {
-                        if(i == 4){
+                        if(i == 2){
                             window.location.href = "no.html";
                         }else{
                             var x = Math.random() * (window.innerWidth - document.getElementById('noButton').offsetWidth) - 85;
